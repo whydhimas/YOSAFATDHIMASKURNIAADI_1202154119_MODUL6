@@ -14,6 +14,7 @@ public class UploadModel {
     public UploadModel() {
     }
 
+    //mengambil data pada image yang di upload seperti judul, caption, id, dan url nya yang bisa dilihat di firebase
     public UploadModel(String title, String caption, String uid, String url, String email) {
         mTitle = title;
         mCaption = caption;

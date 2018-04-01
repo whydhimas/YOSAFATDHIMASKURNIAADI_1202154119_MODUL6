@@ -16,6 +16,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
         this.mNumOfTabs = NumOfTabs;
     }
 
+    //pilihan fragment dalam menu ada TabTimeline dan TabProfile
     @Override
     public Fragment getItem(int position) {
         switch (position) {

@@ -56,6 +56,7 @@ public class UploadActivity extends AppCompatActivity {
 
         FirebaseUser FUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        //get ID dan email di UploadModel
         userID = FUser.getUid();
         email = FUser.getEmail();
 
@@ -86,6 +87,7 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     private void openFileChooser() {
+        //menjalankan explorer image dengan intent
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -95,15 +97,15 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImgUri = data.getData();
-
+            //gambar yang dipilih akan diproses untuk ditampilkan
             Picasso.get().load(mImgUri).into(mImageView);
         }
     }
 
     private void uploadFile(){
+        //jika bernilai null maka menjalankan perintah untuk upload gambar
         if (mImgUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(mImgUri));
             mUploadTask = fileReference.putFile(mImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -142,10 +144,10 @@ public class UploadActivity extends AppCompatActivity {
             Toast.makeText(this, "Select the file", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //untuk mendapatkan ekstensi dari file gambar yang diupload
     private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
+        ContentResolver CR = getContentResolver();
+        MimeTypeMap MTM = MimeTypeMap.getSingleton();
+        return MTM.getExtensionFromMimeType(CR.getType(uri));
     }
 }

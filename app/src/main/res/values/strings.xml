@@ -2,7 +2,7 @@
     <string name="app_name">Popotoan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_timeline">TimelineActivity</string>
-    <string name="title_activity_upload">UploadActivity</string>
+    <string name="hello_blank_fragment">HELLO WELCOME!!</string>
+    <string name="title_activity_timeline">Timeline Activity</string>
+    <string name="title_activity_upload">Upload Photo Activity</string>
 </resources>

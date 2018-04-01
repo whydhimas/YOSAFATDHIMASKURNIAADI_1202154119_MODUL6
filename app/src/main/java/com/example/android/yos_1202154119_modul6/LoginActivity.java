@@ -45,28 +45,28 @@ public class LoginActivity extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String password = mPass.getText().toString();
 
+        //jika email dan password kosong, maka menampilkan pesan the field is empty
         if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
             Toast.makeText(LoginActivity.this, "The field is empty", Toast.LENGTH_SHORT).show();
         } else {
+            //jika pass kurang dari 8 maka password is too short dan harus memasukkan password lebih dari 8
             if (password.length()>8){
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    //ketika sukses, UI akan menampilkan informasi
+                                    //ketika sukses, UI akan menampilkan informasi di log "createUserWithEmail:success" dan toast
                                     Log.d(TAG, "createUserWithEmail:success");
                                     Toast.makeText(LoginActivity.this, "Register Sucess", Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
-
                                 } else {
-                                    //jika gagal, maka menampilkan pesan dan toast
+                                    //jika gagal, maka menampilkan pesan di log "createUserWithEmail:failure" dan toast
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(LoginActivity.this, "Register failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
             }else{
-
                 Toast.makeText(LoginActivity.this, "Password is too short", Toast.LENGTH_SHORT).show();
             }
         }
@@ -76,9 +76,11 @@ public class LoginActivity extends AppCompatActivity {
         String email = mEmail.getText().toString();
         String pass = mPass.getText().toString();
 
+        //ketika login kolom email dan password tidak boleh kosong
         if (TextUtils.isEmpty(email) && TextUtils.isEmpty(pass)){
             Toast.makeText(LoginActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
         }else{
+            //melakukan authentikasi email dan password cocok atau tidak
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                 @Override

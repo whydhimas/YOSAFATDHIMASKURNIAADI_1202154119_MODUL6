@@ -19,9 +19,12 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
+        //menampilkan toolbar di activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //floating action bar akan berjalan ketika diklik
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,8 +35,9 @@ public class TimelineActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Timeline"));
-        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
+        //tab layout ada menu TERBARU dan POTO SAYA
+        tabLayout.addTab(tabLayout.newTab().setText("TERBARU"));
+        tabLayout.addTab(tabLayout.newTab().setText("POTO SAYA"));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -69,15 +73,9 @@ public class TimelineActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+        //menjalankan action_settings sign out ketika diklik
         if (id == R.id.action_settings) {
-//            Intent i = new Intent(this, SettingsActivity.class);
-
             return true;
         }
 

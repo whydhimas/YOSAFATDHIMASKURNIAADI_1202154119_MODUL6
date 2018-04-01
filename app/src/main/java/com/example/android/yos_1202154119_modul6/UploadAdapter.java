@@ -17,7 +17,6 @@ import java.util.List;
  */
 
 public class UploadAdapter extends RecyclerView.Adapter<UploadAdapter.ImageViewHolder> {
-
     List<UploadModel> mUpload;
     Context mContext;
     UploadModel mCurrentUpload;
@@ -41,6 +40,7 @@ public class UploadAdapter extends RecyclerView.Adapter<UploadAdapter.ImageViewH
         holder.mCaption.setText(mCurrentUpload.getmCaption());
         holder.mEmail.setText(mCurrentUpload.getmEmail());
 
+        //gambar yang diupload akan diproses dan didapatkan datanya sesuai yang ditetapkan
         Picasso.get()
                 .load(mCurrentUpload.getmUrl())
                 .fit()
